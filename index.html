@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to my baby</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: blur(5px);
+            z-index: -1;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4d4d;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .buttons {
+            margin-top: 2rem;
+        }
+        button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        #yesBtn, #yesYesBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #yesYesBtn {
+            text-transform: uppercase;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .messageCard {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: #ff4d4d;
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-align: center;
+            min-width: 300px;
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Valentine's Day, Baby!</h1>
+        <p>Will you be my valentine?</p>
+        <div class="buttons">
+            <button id="yesBtn">yes</button>
+            <button id="noBtn">no</button>
+        </div>
+    </div>
+    <div id="noMessageCard" class="messageCard">dapat yes, baby :((</div>
+    <div id="yesMessageCard" class="messageCard">
+        <p>YEHEY!! Let's start baby?</p>
+        <button id="yesYesBtn">YES YES</button>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const yesYesBtn = document.getElementById('yesYesBtn');
+        const noMessageCard = document.getElementById('noMessageCard');
+        const yesMessageCard = document.getElementById('yesMessageCard');
+
+        noBtn.addEventListener('click', () => {
+            noMessageCard.style.display = 'block';
+            setTimeout(() => {
+                noMessageCard.style.display = 'none';
+            }, 2000);
+        });
+
+        yesBtn.addEventListener('click', () => {
+            yesMessageCard.style.display = 'block';
+        });
+
+        yesYesBtn.addEventListener('click', () => {
+    window.location.href = 'questions.html';
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to my baby</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        .questionCard, .introCard, .completionCard, .letterCard {
+            background-color: white;
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+        .questionCard, .completionCard, .letterCard {
+            display: none;
+        }
+        h2 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4d4d;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .choices, .introButtons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+        .choice, #backBtn, .introButton, #backToValentine, #loveButton {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: white;
+        }
+        .choice, #yesReady, #loveButton {
+            background-color: #4CAF50;
+        }
+        #backBtn, #notReady, #backToValentine {
+            background-color: #f44336;
+        }
+        #backBtn, #backToValentine {
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            position: absolute;
+            left: 20px;
+            bottom: 7px;
+        }
+        .choice:hover, #backBtn:hover, .introButton:hover, #backToValentine:hover, #loveButton:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .messageCard {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: #ff4d4d;
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        #loveMessage {
+            font-size: 1.5rem;
+            color: #ff4d4d;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+
+        #backToValentineFromLetter {
+    background-color: #f44336;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+}
+
+#backToValentineFromLetter:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.letterCard {
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    display: none;
+}
+
+.letter-heading {
+    font-family: 'Pacifico', cursive;
+    color: #ff4d4d;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.letter-content {
+    text-align: justify;
+}
+
+.letter-content p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+#loveMessage {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+#backToValentineFromLetter {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="introCard" id="introCard">
+        <h2>Test challenge muna babi😆</h2>
+        <p>ARE YOU READY??</p>
+        <div class="introButtons">
+            <button class="introButton" id="yesReady">YES I AM BABY!</button>
+            <button class="introButton" id="notReady">not really</button>
+        </div>
+        <button id="backToValentine">Back</button>
+    </div>
+
+    <div id="questionCards"></div>
+    <div id="notReadyMessage" class="messageCard">booo, dapat ready ka ah :))</div>
+
+    <div class="completionCard" id="completionCard">
+        <h2>YEYY YOU DID IT BABY!!🤗🩷</h2>
+        <button id="loveButton">I LOVE YOUUU</button>
+    </div>
+
+    <div class="letterCard" id="letterCard">
+        <h2 class="letter-heading">To my dearest nadnad,</h2>
+        <div class="letter-content">
+            <p>
+                Happy halentine's day, my baby! 💗🌹 I hope na-enjoy mo yung mini quiz ko. Cute no? Para lang ma-remind ka how special our moments together are.
+            </p>
+            <p>
+                You know baby, you're not just my uyab. You're like, my best friend, my comfort person, and myuuu. I'm so thankful kase humahaba na patience mo for me HAHAHA. I know minsan I'm acting like a child pero it just shows na im very comfy with youuu na.
+            </p>
+            <p>
+                I always admire you baby, everything about youuu and like sobrang gandang-ganda talaga ako sayo mahal (buyaggg) and always kinikilig hahahaha.
+            </p>
+            <p>
+                Also, sorry if minsan ang moody ako, lablab babi. Tapos yung mga corny kong bantot jokes— but you know naman na kahit ganun, i still love you.
+            </p>
+            <p>
+                Thank you for being you, for loving me kahit minsan mahirap intindihin hehe, and for making me feel like it's Valentine's everyday. 
+            </p>
+            <p>
+                More monthsaries to us mahal and let's keep choosing each other always. Happy valentines, babyy. I love you palagi, mahal ko💗💗 MWAAAAAA🤗🤍
+            </p>
+        </div>
+        <div id="loveMessage">love,<br>your weyang</div>
+        <button id="backToValentineFromLetter">Back</button>
+    </div>
+    
+    
+
+    <audio id="backgroundMusic" loop>
+        <source src="kiss me.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="questionCards"></div>
+<div id="notReadyMessage" class="messageCard">booo, dapat ready ka ah :))</div>
+
+<div class="completionCard" id="completionCard">
+    <h2>YEYY YOU DID IT BABY!!🤗🩷</h2>
+    <button id="loveButton">I LOVE YOUUU</button>
+</div>
+
+
+
+<audio id="backgroundMusic" loop>
+    <source src="kiss me.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+ const introCard = document.getElementById('introCard');
+const questionCards = document.getElementById('questionCards');
+const completionCard = document.getElementById('completionCard');
+const letterCard = document.getElementById('letterCard');
+const yesReadyBtn = document.getElementById('yesReady');
+const notReadyBtn = document.getElementById('notReady');
+const notReadyMessage = document.getElementById('notReadyMessage');
+const backToValentineBtn = document.getElementById('backToValentine');
+const loveButton = document.getElementById('loveButton');
+const backgroundMusic = document.getElementById('backgroundMusic');
+
+const questions = [
+    {
+        question: "When did we become official?",
+        choices: ["December 24, 2024", "December 25, 2024"]
+    },
+    {
+        question: "Favorite ko na tawag mo saken",
+        choices: ["weyang", "weyaaa"]
+    },
+    {
+        question: "What's my favorite color?",
+        choices: ["green", "yellow"]
+    },
+    {
+        question: "When did we first meet?",
+        choices: ["August 31, 2024", "August 30, 2024"]
+    },
+    {
+        question: "First endearment na tinawag mo saken",
+        choices: ["bibi", "langga"]
+    },
+    {
+        question: "First endearment na tinawag ko sayo",
+        choices: ["asawa ko", "bossing"]
+    },
+    {
+        question: "What's my height?",
+        choices: ["5'2", "5'1"]
+    },
+    {
+        question: "What time was it when we first met?",
+        choices: ["10:23", "10:22"]
+    },
+    {
+        question: "When did we decide to commit to each other?",
+        choices: ["December 1, 2024", "November 30, 2024"]
+    },
+    {
+        question: "SINO FAVORITE PERSON KO?",
+        choices: ["AKO", "MEE!"]
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+yesReadyBtn.addEventListener('click', () => {
+    introCard.style.display = 'none';
+    questionCards.style.display = 'block';
+    createQuestionCards();
+    showQuestion(0);
+    backgroundMusic.play();
+});
+
+notReadyBtn.addEventListener('click', () => {
+    notReadyMessage.style.display = 'block';
+    setTimeout(() => {
+        notReadyMessage.style.display = 'none';
+    }, 2000);
+});
+
+backToValentineBtn.addEventListener('click', () => {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    window.location.href = 'index.html';
+});
+
+loveButton.addEventListener('click', () => {
+    completionCard.style.display = 'none';
+    letterCard.style.display = 'block';
+});
+
+function createQuestionCards() {
+    questionCards.innerHTML = '';
+    questions.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.classList.add('questionCard');
+        card.innerHTML = `
+            <h2>Question ${index + 1}</h2>
+            <p>${q.question}</p>
+            <div class="choices">
+                <button class="choice" data-correct="${index === questions.length - 1 ? 'true' : index < 5 ? 'true' : 'false'}">${q.choices[0]}</button>
+                <button class="choice" data-correct="${index === questions.length - 1 ? 'true' : index >= 5 ? 'true' : 'false'}">${q.choices[1]}</button>
+            </div>
+            <button id="backBtn">${index === 0 ? 'Back' : 'Back'}</button>
+        `;
+        questionCards.appendChild(card);
+    });
+}
+
+function showQuestion(index) {
+    const cards = document.querySelectorAll('.questionCard');
+    cards.forEach(card => card.style.display = 'none');
+    cards[index].style.display = 'block';
+    questionCards.style.display = 'block';
+}
+
+function showFeedback(correct) {
+    const feedbackCard = document.createElement('div');
+    feedbackCard.classList.add('messageCard');
+    feedbackCard.style.display = 'block';
+    
+    if (currentQuestion === questions.length - 1) {
+        feedbackCard.textContent = "WOWWW HAHAHAHAHAA 😂";
+        score++;
+    } else if (correct) {
+        feedbackCard.textContent = "Yay! You got it right, baby! 😘";
+        score++;
+    } else {
+        const teasingMessages = [
+            "Oops! Wrong answer, babi??",
+            "Naku naman, that's not it! Do you need a hint? 😅",
+            "Wrong! Maybe you should pay more attention to me, huh? 😏",
+            "Ay sus, that's incorrect! But it's okay, I still love you. 😘",
+            "Nope! But don't worry, you're still cute even when you're wrong. 😊"
+        ];
+        feedbackCard.textContent = teasingMessages[Math.floor(Math.random() * teasingMessages.length)];
+    }
+
+    document.body.appendChild(feedbackCard);
+    setTimeout(() => {
+        feedbackCard.remove();
+        showNextQuestion();
+    }, 2000);
+}
+
+function showNextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+    } else {
+        questionCards.style.display = 'none';
+        completionCard.style.display = 'block';
+        document.querySelector('#completionCard h2').
+        textContent = `YEYY YOU DID IT BABY!!🤗🩷 Score: ${score}/10`;
+    }
+}
+
+function showPreviousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+    } else {
+        questionCards.style.display = 'none';
+        introCard.style.display = 'block';
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0;
+    }
+}
+
+questionCards.addEventListener('click', (e) => {
+    if (e.target.classList.contains('choice')) {
+        const isCorrect = e.target.getAttribute('data-correct') === 'true';
+        showFeedback(isCorrect || currentQuestion === questions.length - 1);
+    } else if (e.target.id === 'backBtn') {
+        showPreviousQuestion();
+    }
+});
+
+const backToValentineFromLetterBtn = document.getElementById('backToValentineFromLetter');
+
+backToValentineFromLetterBtn.addEventListener('click', () => {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    window.location.href = 'my baby.html';
+});
+
+// Ensure all cards are hidden initially except for the intro card
+document.addEventListener('DOMContentLoaded', () => {
+    introCard.style.display = 'block';
+    questionCards.style.display = 'none';
+    completionCard.style.display = 'none';
+    letterCard.style.display = 'none';
+});
+
+
+</script>
